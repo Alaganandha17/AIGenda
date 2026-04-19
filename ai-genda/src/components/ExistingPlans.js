@@ -19,9 +19,9 @@ const parseAmt = (s) => {
 };
 
 const TIER_CONFIG = {
-  "Budget-Friendly": { color:"#22c55e" },
+  "Budget-Friendly": { color:"#c55b22" },
   "Recommended":     { color:"#f97316" },
-  "Premium":         { color:"#a855f7" },
+  "Premium":         { color:"#dd6322" },
 };
 
 const CAT_LABELS = {
