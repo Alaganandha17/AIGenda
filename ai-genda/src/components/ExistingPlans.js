@@ -19,9 +19,9 @@ const parseAmt = (s) => {
 };
 
 const TIER_CONFIG = {
-  "Budget-Friendly": { color:"#c55b22" },
+  "Budget-Friendly": { color:"#22c55e" },
   "Recommended":     { color:"#f97316" },
-  "Premium":         { color:"#dd6322" },
+  "Premium":         { color:"#a855f7" },
 };
 
 const CAT_LABELS = {
@@ -39,10 +39,10 @@ const ExistingPlans = () => {
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/events/${loggedInUser?.name}`)
+    axios.get(`https://aigenda.onrender.com/events/${loggedInUser?.name}`)
       .then((r) => setEvents(r.data))
       .catch(() => {});
-  }, []);
+  }, [loggedInUser?.name]);
 
   const viewPlan = async (event) => {
     setSelectedEvent(event);
