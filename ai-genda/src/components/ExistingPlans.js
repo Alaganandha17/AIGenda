@@ -38,7 +38,7 @@ const ExistingPlans = () => {
   const [aiPlans, setAiPlans] = useState(null);
   const [loadingAI, setLoadingAI] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
 useEffect(() => {
   axios.get(`http://localhost:5000/events/${loggedInUser?.name}`)
     .then((r) => setEvents(r.data))
