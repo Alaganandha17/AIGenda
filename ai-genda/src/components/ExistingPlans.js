@@ -37,6 +37,7 @@ const ExistingPlans = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [aiPlans, setAiPlans] = useState(null);
   const [loadingAI, setLoadingAI] = useState(false);
+  const [loadingCardIndex, setLoadingCardIndex] = useState(null);
 
   useEffect(() => {
     axios.get(`https://aigenda.onrender.com/events/${loggedInUser?.name}`)
@@ -44,10 +45,13 @@ const ExistingPlans = () => {
       .catch(() => {});
   }, [loggedInUser?.name]);
 
-  const viewPlan = async (event) => {
-    setSelectedEvent(event);
+  const viewPlan = async (event, idx) => {
+    setLoadingCardIndex(idx);
     setAiPlans(null);
     setLoadingAI(true);
+    // Show detail view immediately — don't wait for AI
+    setSelectedEvent(event);
+    setLoadingCardIndex(null);
     try {
       const { min, max } = parseBudgetRange(event.budgetRange);
       const res = await axios.post("https://aigenda.onrender.com/api/plan-event", {
@@ -57,7 +61,7 @@ const ExistingPlans = () => {
       });
       setAiPlans(res.data);
       setEventPlanResponse(res.data);
-    } catch { /* AI offline */ }
+    } catch { /* AI offline or sleeping */ }
     setLoadingAI(false);
   };
 
@@ -97,7 +101,7 @@ const ExistingPlans = () => {
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",
               gap:"16px", maxWidth:"900px", width:"100%", marginBottom:"32px" }}>
               {events.filter((e) => e.email === loggedInUser?.email).map((event, i) => (
-                <div key={i} onClick={() => viewPlan(event)}
+                <div key={i} onClick={() => viewPlan(event, i)}
                   style={{ background:"rgba(255,255,255,0.06)", backdropFilter:"blur(12px)",
                     border:"1px solid rgba(255,255,255,0.12)", borderRadius:"16px",
                     padding:"20px", cursor:"pointer", transition:"all 0.2s" }}
@@ -127,7 +131,9 @@ const ExistingPlans = () => {
                     {event.timestamp}
                   </p>
                   <p style={{ color:"rgba(255,255,255,0.45)", fontSize:"0.78rem", marginTop:"6px",
-                    marginBottom:0, fontWeight:"600" }}>View AI plan →</p>
+                    marginBottom:0, fontWeight:"600" }}>
+                    {loadingCardIndex === i ? "Opening..." : "View AI plan →"}
+                  </p>
                 </div>
               ))}
             </div>
