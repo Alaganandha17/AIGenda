@@ -220,7 +220,7 @@ const ExistingPlans = () => {
 
           {!loadingAI && !aiPlans && (
             <div style={{ color:"rgba(255,255,255,0.3)", textAlign:"center", fontSize:"0.85rem", padding:"20px 0" }}>
-              Start the Python backend (port 5001) to see AI budget plans.
+              AI budget plans will appear here once the backend is connected.
             </div>
           )}
 
