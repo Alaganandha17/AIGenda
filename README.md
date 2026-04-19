@@ -5,8 +5,7 @@
 ```
 aigenda/
 ├── ai-genda/              ← React frontend (port 3000)
-├── login-op-backend/      ← Node.js backend — auth + event storage (port 5000)
-├── ai-genda-backend/      ← Python Flask + XGBoost AI backend (port 5001)
+├── backend/               ← Python Flask + XGBoost — auth, events & AI (port 5001)
 ├── START.bat              ← Windows: double-click to run everything
 └── start.sh               ← Mac/Linux: ./start.sh
 ```
@@ -16,8 +15,8 @@ aigenda/
 ## Run Locally
 
 ### Requirements
-- [Node.js](https://nodejs.org) v16+
 - [Python](https://python.org) 3.8+
+- [Node.js](https://nodejs.org) v16+ (for React frontend)
 
 ### Windows
 Double-click **`START.bat`**
@@ -28,23 +27,16 @@ chmod +x start.sh
 ./start.sh
 ```
 
-### Manual (3 terminals)
+### Manual (2 terminals)
 
 **Terminal 1:**
 ```bash
-cd login-op-backend
-npm install
-node server.js
-```
-
-**Terminal 2:**
-```bash
-cd ai-genda-backend
+cd backend
 pip install -r requirements.txt
 python server.py
 ```
 
-**Terminal 3:**
+**Terminal 2:**
 ```bash
 cd ai-genda
 npm install
@@ -68,7 +60,7 @@ Open **http://localhost:3000**
 
 ## How the AI Works
 
-The `ai-genda-backend/event_recommender_model.pkl` is a trained **XGBoost Regressor**.
+The `backend/event_recommender_model.pkl` is a trained **XGBoost Regressor**.
 
 **Inputs → Output:**
 | Input | Example |
@@ -81,9 +73,9 @@ The `ai-genda-backend/event_recommender_model.pkl` is a trained **XGBoost Regres
 **→ Predicts:** venue cost in ₹
 
 The backend then produces 3 plans around the prediction:
-- **Budget-Friendly** = prediction × 0.75
+- **Budget-Friendly** = prediction × 0.65
 - **Recommended** = raw XGBoost prediction
-- **Premium** = prediction × 1.30
+- **Premium** = prediction × 1.40
 
 Each plan includes a full budget breakdown: venue, catering, decoration, entertainment, logistics, misc.
 
@@ -91,28 +83,20 @@ Each plan includes a full budget breakdown: venue, catering, decoration, enterta
 
 ## Deploy to Production
 
+### Backend → Render
+- Point to `backend/`
+- Start command: `python server.py`
+- Render URL: **https://aigenda.onrender.com**
+- Make sure `event_recommender_model.pkl` is included
+
 ### Frontend → Vercel / Netlify
 ```bash
 cd ai-genda
 npm run build
 # Upload the build/ folder to Vercel or Netlify
 ```
-Then update these two lines in `FinalPage.js` to point to your deployed backends:
-```js
-await axios.post("http://localhost:5000/events", ...)      // → your Node URL
-await axios.post("http://localhost:5001/api/plan-event", .) // → your Python URL
-```
 
-### Node Backend → Railway / Render
-- Point to `login-op-backend/`
-- Start command: `node server.js`
-- Port: `5000`
-
-### Python Backend → Railway / Render / Fly.io
-- Point to `ai-genda-backend/`
-- Start command: `python server.py`
-- Port: `5001`
-- Make sure `event_recommender_model.pkl` is included
+All API calls in the frontend already point to `https://aigenda.onrender.com`.
 
 ---
 

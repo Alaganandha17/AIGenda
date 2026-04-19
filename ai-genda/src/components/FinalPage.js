@@ -49,7 +49,7 @@ const FinalPage = () => {
         };
 
         try {
-            await axios.post("http://localhost:5000/events", newEvent);
+            await axios.post("https://aigenda.onrender.com/events", newEvent);
 
             const { min, max } = parseBudgetRange(formData.budgetRange);
             const reqData = {
@@ -61,18 +61,18 @@ const FinalPage = () => {
                 maxBudget:  max,
             };
 
-            const resp2 = await axios.post("http://localhost:5001/api/plan-event", reqData);
+            const resp2 = await axios.post("https://aigenda.onrender.com/api/plan-event", reqData);
             setEventPlanResponse(resp2.data);
             localStorage.removeItem("aigenda_formData");
             navigate("/event-plan");
         } catch (error) {
             console.error("Error:", error);
-            if (error.code === "ERR_NETWORK" || error.message.includes("5001")) {
-                setResponse("Python AI backend (port 5001) is not running. Start it and try again.");
-            } else if (error.message.includes("5000")) {
-                setResponse("Node backend (port 5000) is not running. Start it and try again.");
+            if (error.code === "ERR_NETWORK" || error.code === "ECONNREFUSED") {
+                setResponse("Cannot reach the backend. Make sure the server is running at aigenda.onrender.com");
+            } else if (error.response) {
+                setResponse(`Server error (${error.response.status}): ${error.response.data?.error || "Unknown error"}`);
             } else {
-                setResponse("Failed to save event or get AI plan. Check both backends are running.");
+                setResponse("Failed to save event or get AI plan. Please try again.");
             }
         } finally {
             setLoading(false);

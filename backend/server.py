@@ -259,8 +259,10 @@ def plan_event():
 
 @app.route("/", methods=["GET"])
 def health():
-    return jsonify({"status":"ok","message":"Aigenda Python AI backend running on port 5001"}), 200
+    return jsonify({"status":"ok","message":"Aigenda Python AI backend running on port (configured by Render via PORT env var)"}), 200
 
 if __name__ == "__main__":
-    logger.info("Starting Aigenda Python AI backend on http://0.0.0.0:5001")
-    app.run(host="0.0.0.0", port=5001, debug=False)
+    logger.info("Starting Aigenda Python AI backend on http://0.0.0.0")
+    import os
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port, debug=False)

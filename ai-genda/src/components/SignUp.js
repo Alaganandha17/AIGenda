@@ -35,7 +35,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/signup", user);
+      const res = await axios.post("https://aigenda.onrender.com/signup", user);
       if (res.data.success) {
         navigate("/event-selection", { state: { name: user.name } });
       } else {

@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async () => {
     if (!username || password.length < 8) return;
     try {
-      const response = await axios.post("http://localhost:5000/login", { username, password });
+      const response = await axios.post("https://aigenda.onrender.com/login", { username, password });
       localStorage.setItem("loggedInUser", JSON.stringify(response.data.user));
       navigate("/existing-plans");
     } catch {

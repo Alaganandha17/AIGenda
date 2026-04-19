@@ -39,7 +39,7 @@ const ExistingPlans = () => {
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/events/${loggedInUser?.name}`)
+    axios.get(`https://aigenda.onrender.com/events/${loggedInUser?.name}`)
       .then((r) => setEvents(r.data))
       .catch(() => {});
   }, []);
@@ -50,7 +50,7 @@ const ExistingPlans = () => {
     setLoadingAI(true);
     try {
       const { min, max } = parseBudgetRange(event.budgetRange);
-      const res = await axios.post("http://localhost:5001/api/plan-event", {
+      const res = await axios.post("https://aigenda.onrender.com/api/plan-event", {
         eventType: event.eventType||"Birthday", theme: event.theme||"Classic",
         city: event.city||"Bangalore", guestCount: event.guestCount||"200",
         minBudget: min, maxBudget: max,
