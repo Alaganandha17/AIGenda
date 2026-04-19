@@ -39,7 +39,7 @@ const ExistingPlans = () => {
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    axios.get(`https://aigenda.onrender.com/events/${loggedInUser?.name}`)
+    axios.get(`http://localhost:5000/events/${loggedInUser?.name}`)
       .then((r) => setEvents(r.data))
       .catch(() => {});
   }, []);

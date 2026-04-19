@@ -90,7 +90,6 @@ const LoginPage = () => {
                 Password: <code style={{ color: "#fff" }}>alice1234</code>
                 <div style={{ position: "absolute", bottom: "-6px", left: "50%", transform: "translateX(-50%)",
                   width: "12px", height: "12px", background: "rgba(20,20,20,0.95)",
-                  transform: "translateX(-50%) rotate(45deg)", borderRight: "1px solid rgba(255,179,71,0.3)",
                   borderBottom: "1px solid rgba(255,179,71,0.3)" }} />
               </div>
             )}
