@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Alice",
+    "email": "alice@example.com",
+    "eventType": "Anniversary",
+    "theme": "Candlelight",
+    "guestCount": "Below 155",
+    "catering": "Hyderabadi Zayka",
+    "city": "Hyderabad",
+    "venue": "ITC Kohenur",
+    "entertainment": "Ghazal Night",
+    "photography": {
+      "provider": "Elite Captures",
+      "cost": [
+        492563,
+        182375
+      ],
+      "specialties": [
+        "Hyderabadi Cuisine Styling",
+        "Nizam-Era Portrait Recreation"
+      ]
+    },
+    "budgetRange": "< \u00e2\u201a\u00b920L",
+    "timestamp": "31/03/2025, 13:26:58"
+  },
+  {
+    "name": "Adhi",
+    "email": "u2208005@gmail.com",
+    "eventType": "Graduation",
+    "theme": "Black and Gold",
+    "guestCount": "200",
+    "catering": "Kerala Delights",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "1000000",
+    "entertainment": "DJ Night",
+    "decoration": "Floral Fantasy",
+    "timestamp": "07/04/2025, 09:06:21"
+  },
+  {
+    "name": "Adhi",
+    "email": "u2208005@gmail.com",
+    "eventType": "Graduation",
+    "theme": "Black and Gold",
+    "guestCount": "200",
+    "catering": "Kerala Delights",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "1000000",
+    "entertainment": "DJ Night",
+    "decoration": "Traditional Elegance",
+    "timestamp": "07/04/2025, 09:22:24"
+  },
+  {
+    "name": "Alice",
+    "email": "alice@example.com",
+    "eventType": "Graduation",
+    "theme": "Black and Gold",
+    "guestCount": "250",
+    "catering": "Kerala Delights",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "1000000",
+    "entertainment": "DJ Night",
+    "decoration": "Floral Fantasy",
+    "timestamp": "08/04/2025, 23:03:19"
+  },
+  {
+    "name": "Dev",
+    "email": "dev@gmail.com",
+    "eventType": "Birthday",
+    "theme": "Retro",
+    "guestCount": "2000",
+    "catering": "Kerala Delights",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "1000000",
+    "entertainment": "Magic Show",
+    "decoration": "Elegant Simplicity",
+    "timestamp": "19/04/2025, 14:44:14"
+  },
+  {
+    "name": "Dev",
+    "email": "dev@gmail.com",
+    "eventType": "Graduation",
+    "theme": "Black and Gold",
+    "guestCount": "500",
+    "catering": "Kerala Delights",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "1000000",
+    "entertainment": "DJ Night",
+    "decoration": "Floral Fantasy",
+    "timestamp": "19/04/2025, 14:46:28"
+  },
+  {
+    "name": "Dev",
+    "email": "dev@gmail.com",
+    "eventType": "Graduation",
+    "theme": "Black and Gold",
+    "guestCount": "500",
+    "catering": "Malabar Feast",
+    "city": "Kochi",
+    "minBudget": "100000",
+    "maxBudget": "200000",
+    "entertainment": "DJ Night",
+    "decoration": "Traditional Elegance",
+    "timestamp": "19/04/2025, 14:47:33"
+  }
+]
