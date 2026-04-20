@@ -100,20 +100,20 @@ const ExistingPlans = () => {
           ) : (
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",
               gap:"16px", maxWidth:"900px", width:"100%", marginBottom:"32px" }}>
-              {events.filter((e) => e.email === loggedInUser?.email).map((event, i) => (
+              {events.map((event, i) => (
                 <div key={i} onClick={() => viewPlan(event, i)}
                   style={{ background:"rgba(255,255,255,0.06)", backdropFilter:"blur(12px)",
                     border:"1px solid rgba(255,255,255,0.12)", borderRadius:"16px",
                     padding:"20px", cursor:"pointer", transition:"all 0.2s" }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background="rgba(255,255,255,0.1)";
-                    e.currentTarget.style.borderColor="rgba(255,255,255,0.25)";
-                    e.currentTarget.style.transform="translateY(-3px)";
+                  onMouseOver={(ev) => {
+                    ev.currentTarget.style.background="rgba(255,255,255,0.1)";
+                    ev.currentTarget.style.borderColor="rgba(255,255,255,0.25)";
+                    ev.currentTarget.style.transform="translateY(-3px)";
                   }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background="rgba(255,255,255,0.06)";
-                    e.currentTarget.style.borderColor="rgba(255,255,255,0.12)";
-                    e.currentTarget.style.transform="none";
+                  onMouseOut={(ev) => {
+                    ev.currentTarget.style.background="rgba(255,255,255,0.06)";
+                    ev.currentTarget.style.borderColor="rgba(255,255,255,0.12)";
+                    ev.currentTarget.style.transform="none";
                   }}>
                   <div style={{ marginBottom:"12px" }}>
                     <p style={{ color:"#fff", fontWeight:"700", margin:0, fontSize:"1rem" }}>{event.eventType}</p>
